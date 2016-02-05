@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<!-- Author: Shuo Liu, Date: Jan 30, 2016 -->
+<!-- This demo is tested with chrome, firefox and safari -->
+<html>
+<head>
+    <title>Event Widget Example</title>
+    <link rel="stylesheet" type="text/css" href="event-widget.css">
+    <style>
+        #event-widget-1 {
+            top: 50px;
+            right: 300px;
+        }
+
+        #event-widget-2 {
+            top: 250px;
+            left: 300px;
+        }
+
+        #event-widget-3 {
+            top: 600px;
+            left: 300px;
+        }
+
+        #content {
+            width: 400px;
+            margin: auto;
+            font-family: sans-serif
+        }
+
+        #widget-1 {
+            margin-top: 100px
+        }
+
+        #widget-2 {
+            margin-top: 220px
+        }
+
+        #widget-3 {
+            margin-top: 100px
+        }
+
+        input:not([type='submit']) {
+            width: 150px;
+        }
+    </style>
+    <script type="text/javascript" src="event-widget.js"></script>
+    <script type="text/javascript">
+        var widget3;
+
+        function addNewEvent() {
+            var event = {};
+            var value;
+            value = document.getElementById('occasion').value;
+            if (!value) return;
+            event['occasion'] = document.getElementById('occasion').value;
+
+            value = parseInt(document.getElementById('count').value);
+            if (isNaN(value)) return;
+            event['invited_count'] = value;
+
+            value = parseInt(document.getElementById('year').value);
+            if (isNaN(value)) return;
+            event['year'] = value;
+
+            value = parseInt(document.getElementById('month').value);
+            if (isNaN(value)) return;
+            event['month'] = value;
+
+            value = parseInt(document.getElementById('day').value);
+            if (isNaN(value)) return;
+            event['day'] = value;
+
+            widget3.addEvent(event);
+        }
+
+        document.addEventListener("DOMContentLoaded", function(event) {
+            var data = {
+                "events": [
+                  {
+                    "occasion": "Birthday party",
+                    "invited_count": 120,
+                    "year": 2016,
+                    "month": 2,
+                    "day": 14
+                  },
+                  {
+                    "occasion": "Technical discussion",
+                    "invited_count": 23,
+                    "year": 2016,
+                    "month": 11,
+                    "day": 24
+                  },
+                  {
+                    "occasion": "Press release",
+                    "invited_count": 64,
+                    "year": 2015,
+                    "month": 12,
+                    "day": 17,
+                    "cancelled": true
+                  },
+                  {
+                    "occasion": "New year party",
+                    "invited_count": 55,
+                    "year": 2016,
+                    "month": 1,
+                    "day": 1
+                  }
+                ]
+            };
+
+
+
+            // create widget 1 with no custom params
+            var eventWidget1 = new MyEventWidget();
+            eventWidget1.init(data);
+
+            // create widget 2 with  custom params
+            var eventWidget2 = new MyEventWidget({
+                displayCount: 4,
+                scrollCount: 2
+            });
+            eventWidget2.init(data);
+
+
+            // create widget 3 with  custom params
+            var eventWidget3 = new MyEventWidget({
+                displayCount: 3,
+                cellHeight: 40
+            });
+            eventWidget3.init(data);
+            widget3 = eventWidget3;
+        });
+    </script>
+</head>
+<body>
+    <div id="content">
+        <div id="widget-1">
+            <p>
+                On the right, create widget with default params:<br>
+                var eventWidget1 = new MyEventWidget();
+            </p>
+        <div>
+        <div id="widget-2">
+            <p>
+                On the left, create widget with custom params:<br>
+                var eventWidget2 = new MyEventWidget({displayCount: 4,scrollCount: 2});
+            </p>
+            <p>Event details will show on either left or right depends on the position to the screen. </p>
+        <div>
+        <div id="widget-3">
+            Try add an event to the 3rd widget on the left:
+            <form onsubmit="addNewEvent(); return false;" method="post">
+                <label>event occasion:</label><br>
+                <input id="occasion" type="text" maxlength="20" value="new event"> <br>
+                <label>invited count:</label><br>
+                <input id="count" type="number" max="999" min="0" value="8"> <br>
+                <label>year:</label><br>
+                <input id="year" type="number" max="9999" min="2016" value="2017"><br>
+                <label>month:</label><br>
+                <input id="month" type="number" max="12" min="01" value="1"><br>
+                <label>day:</label><br>
+                <input id="day" type="number" max="31" min="01" value="1"><br>
+                <input type="submit" value="Add event">
+            </form>
+        <div>
+    </div>
+</body>
+</html>
