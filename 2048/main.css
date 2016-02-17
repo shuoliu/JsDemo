@@ -1,0 +1,221 @@
+body {
+  color: #776e65;
+  font-family: "Clear Sans", sans-serif;
+}
+
+button {
+  height: 40px;
+  padding-left: 8px;
+  padding-right: 8px;
+  background: #8f7a66;
+  border: none;
+  color: #f9f6f2;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+button:active {
+  color: #f9f6f2;
+}
+
+.game-container {
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 15px 0 0 15px;
+  cursor: default;
+  background: #bbada0;
+  border-radius: 6px;
+  width: 475px;
+  height: 475px;
+  box-sizing: border-box;
+}
+
+.grid-container {
+  position: absolute;
+  z-index: 1; 
+}
+
+.grid-row {
+  margin-bottom: 15px; 
+}
+
+.grid-row:after {
+  content: "";
+  display: block;
+  clear: both; 
+}
+
+.grid-cell {
+  width: 100px;
+  height: 100px;
+  margin-right: 15px;
+  float: left;
+  border-radius: 3px;
+  background: rgba(238, 228, 218, 0.35); 
+}
+
+.tile-container {
+  position: absolute;
+  z-index: 2; 
+}
+
+.tile {
+  position: absolute;
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: 50px;
+  width: 100px;
+  height: 100px;
+  line-height: 100px; 
+  text-align: center;
+  transition: transform 100ms;
+}
+
+.tile.tile-merged {
+  z-index: 10;
+}
+
+
+.tile.tile-position-0-0 {
+  transform: translate(0px, 0px); 
+}
+.tile.tile-position-0-1 {
+  transform: translate(115px, 0px); 
+}
+.tile.tile-position-0-2 {
+  transform: translate(230px, 0px); 
+}
+.tile.tile-position-0-3 {
+  transform: translate(345px, 0px); 
+}
+.tile.tile-position-1-0 {
+  transform: translate(0px, 115px); 
+}
+.tile.tile-position-1-1 {
+  transform: translate(115px, 115px); 
+}
+.tile.tile-position-1-2 {
+  transform: translate(230px, 115px); 
+}
+.tile.tile-position-1-3 {
+  transform: translate(345px, 115px); 
+}
+.tile.tile-position-2-0 {
+  transform: translate(0px, 230px); 
+}
+.tile.tile-position-2-1 {
+  transform: translate(115px, 230px); 
+}
+.tile.tile-position-2-2 {
+  transform: translate(230px, 230px); 
+}
+.tile.tile-position-2-3 {
+  transform: translate(345px, 230px); 
+}
+.tile.tile-position-3-0 {
+  transform: translate(0px, 345px); 
+}
+.tile.tile-position-3-1 {
+  transform: translate(115px, 345px); 
+}
+.tile.tile-position-3-2 {
+  transform: translate(230px, 345px); 
+}
+.tile.tile-position-3-3 {
+  transform: translate(345px, 345px); 
+}
+
+
+.tile.tile-2 {
+  background: #eee4da;
+  box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0), inset 0 0 0 1px rgba(255, 255, 255, 0);
+}
+
+.tile.tile-4 {
+  background: #ede0c8;
+  box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0), inset 0 0 0 1px rgba(255, 255, 255, 0);
+}
+
+.tile.tile-8 {
+  color: #f9f6f2;
+  background: #f2b179;
+}
+
+.tile.tile-16 {
+  color: #f9f6f2;
+  background: #f59563;
+}
+
+.tile.tile-32 {
+  color: #f9f6f2;
+  background: #f67c5f;
+}
+
+.tile.tile-64 {
+  color: #f9f6f2;
+  background: #f65e3b;
+}
+
+.tile.tile-128 {
+  color: #f9f6f2;
+  background: #edcf72;
+  box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.2381), inset 0 0 0 1px rgba(255, 255, 255, 0.14286);
+  font-size: 45px;
+}
+
+.tile.tile-256 {
+  color: #f9f6f2;
+  background: #edcc61;
+  box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.31746), inset 0 0 0 1px rgba(255, 255, 255, 0.19048);
+  font-size: 45px;
+}
+
+.tile.tile-512 {
+  color: #f9f6f2;
+  background: #edc850;
+  box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.39683), inset 0 0 0 1px rgba(255, 255, 255, 0.2381);
+  font-size: 45px;
+}
+
+.tile.tile-1024 {
+  color: #f9f6f2;
+  background: #edc53f;
+  box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.47619), inset 0 0 0 1px rgba(255, 255, 255, 0.28571);
+  font-size: 35px;
+}
+
+.tile.tile-2048 {
+  color: #f9f6f2;
+  background: #edc22e;
+  box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.55556), inset 0 0 0 1px rgba(255, 255, 255, 0.33333);
+  font-size: 35px;
+}
+
+.tile.tile-super {
+  color: #f9f6f2;
+  background: #3c3a32;
+  font-size: 30px;
+}
+
+.game-message {
+  position: absolute;
+  top: 200px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  z-index: 100;
+}
+
+.game-message p {
+  font-size: 60px;
+}
+
+.game-message button {
+  font-size: 18px;
+}
+
+.game-message .continue-button {
+  margin-right: 20px;
+}
